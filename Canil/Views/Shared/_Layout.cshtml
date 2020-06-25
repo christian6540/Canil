@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Canil</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div style="background-color:#101010">
+        <div class="container1">
+
+            <div class="banner-image"></div>
+        </div>
+
+        <div class="login">
+            <ul>
+                <li>
+                    <a asp-controller="home" asp-action="login" style="float:right;">Login</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container1">
+            <nav>
+                <ul class="nav-links" id="transition1">
+                    <li>
+                        <a asp-controller="home" asp-action="index">Home  </a>
+                    </li>
+                    <li>
+                        <a asp-controller="home" asp-action="caes">Cães  </a>
+                    </li>
+                    <li>
+                        <a asp-controller="home" asp-action="adote">Adote  </a>
+                    </li>
+                    <li>
+                        <a asp-controller="home" asp-action="doaçoes">Doações  </a>
+                    </li>
+                    <li>
+                        <a asp-controller="home" asp-action="loja">Loja  </a>
+                    </li>
+                    <li>
+                        <a asp-controller="" asp-action="" style="white-space: nowrap">Informações <span><i class="fa fa-circle-o" aria-hidden="true"></i></span></a>
+                        <ul>
+                            <li>
+                                <a asp-controller="home" asp-action="canil">Canil</a>
+                            </li>
+                            <li>
+                                <a asp-controller="home" asp-action="saude">Saúde</a>
+                            </li>
+                            <li>
+                                <a asp-controller="home" asp-action="treino">Treino</a>
+                            </li>
+                            <li>
+                                <a asp-controller="home" asp-action="atividades">Atividades</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="footer text-muted">
+            <div class="container">
+                &copy; 2020 - Canil - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
