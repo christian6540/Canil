@@ -5,9 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySQL.Data.EntityFrameworkCore;
+using Canil.Models;
+using Canil.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace Canil
 {
@@ -22,8 +27,15 @@ namespace Canil
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {    
+                services.AddDbContext<CanilContext>(options =>
+                    options.UseMySql(
+                        Configuration.GetConnectionString("DefaultConnection")));
+                //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                //    .AddEntityFrameworkStores<CanilContext>();
+
             services.AddControllersWithViews();
+            services.AddRazorPages();           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +56,7 @@ namespace Canil
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -51,6 +64,7 @@ namespace Canil
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
