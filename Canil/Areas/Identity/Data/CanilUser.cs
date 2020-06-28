@@ -10,16 +10,16 @@ namespace Canil.Areas.Identity.Data
     // Add profile data for application users by adding properties to the CanilUser class
     public class CanilUser : IdentityUser
     {
-        [PersonalData]
-        [Column(TypeName = "varchar(100)")]
-        public string Username { get; set; }
+        //[PersonalData]
+        //[Column(TypeName = "varchar(100)")]
+        //public string Username { get; set; }
 
-        [PersonalData]
-        [Column(TypeName = "varchar(100)")]
-        public string email { get; set; }
+        //[PersonalData]
+        //[Column(TypeName = "varchar(100)")]
+        //public string email { get; set; }
 
-        [PersonalData]
-        [Column(TypeName = "varchar(100)")]
-        public string password { get; set; }        
+        //[PersonalData]
+        //[Column(TypeName = "varchar(100)")]
+        //public string password { get; set; }        
     }
 }

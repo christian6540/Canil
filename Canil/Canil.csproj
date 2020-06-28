@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200627061032_Canil.cs" />
     <Compile Remove="Migrations\20200627061032_Canil.Designer.cs" />
+    <Compile Remove="Migrations\20200627061123_canil.cs" />
+    <Compile Remove="Migrations\20200627061123_canil.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>  

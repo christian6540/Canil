@@ -69,15 +69,6 @@ namespace Canil.Migrations
                         .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
 
-                    b.Property<string>("Username")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("email")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("password")
-                        .HasColumnType("varchar(100)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")

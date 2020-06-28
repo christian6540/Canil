@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Canil.Migrations
 {
     [DbContext(typeof(CanilContext))]
-    [Migration("20200627061123_canil")]
-    partial class canil
+    [Migration("20200628064530_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,15 +70,6 @@ namespace Canil.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Username")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("email")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("password")
-                        .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
 
