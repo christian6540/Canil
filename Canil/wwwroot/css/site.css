@@ -16,7 +16,7 @@ body {
     /* bottom = footer height */
 }
 
-footer {
+/*footer {
     background-color: orange;
     position: absolute;
     left: 0;
@@ -24,7 +24,7 @@ footer {
     height: 100px;
     width: 100%;
     overflow: hidden;
-}
+}*/
 
 .container1 {
     background-color: #101010;
@@ -52,7 +52,6 @@ footer {
         font-size: 20px;
         padding: 8px 14px;
         border-radius: 3px;
-        text-shadow: 1px 1px 1px goldenrod;
         transition: 0.3s;
     }
 

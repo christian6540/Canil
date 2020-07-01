@@ -52,6 +52,26 @@ namespace Canil.Areas.Identity.Pages.Account
             public string UserName { get; set; }
 
             [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Phone Number")]
+            public string Telefone { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Name")]
+            public string nome { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Surname")]
+            public string apelido { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Adress")]
+            public string morada { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -80,7 +100,7 @@ namespace Canil.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new CanilUser { UserName = Input.UserName, Email = Input.Email };
+                var user = new CanilUser { UserName = Input.UserName, Email = Input.Email, PhoneNumber = Input.Telefone, Name = Input.nome, Surname = Input.apelido, Adress = Input.morada};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

@@ -1,0 +1,187 @@
+﻿html {
+    background-color: #101010;
+}
+
+/* Bordered form */
+form {
+    background-color: #101010;
+/*    border: solid;
+    border-width:medium;
+    border-color: whitesmoke;*/
+}
+
+.CustomCard {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+b {
+    color: whitesmoke;
+}
+
+label {
+    color: whitesmoke;
+}
+
+span {
+    color: whitesmoke;
+}
+
+    span a {
+        text-decoration: none;
+        color: #d5c561
+    }
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 0px 0 12px 0;
+    background-color: #101010
+}
+
+/* Avatar image */
+img.avatar {
+    width: 17%;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+    background-color: #101010
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.draw-border {
+    box-shadow: inset 0 0 0 4px #58afd1;
+    color: #58afd1;
+    -webkit-transition: color 0.25s 0.0833333333s;
+    transition: color 0.25s 0.0833333333s;
+    position: relative;
+}
+
+    .draw-border::before, .draw-border::after {
+        border: 0 solid transparent;
+        box-sizing: border-box;
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    .draw-border::before {
+        border-bottom-width: 4px;
+        border-left-width: 4px;
+    }
+
+    .draw-border::after {
+        border-top-width: 4px;
+        border-right-width: 4px;
+    }
+
+    .draw-border:hover {
+        color: #ffe593;
+    }
+
+        .draw-border:hover::before, .draw-border:hover::after {
+            border-color: #ffe593;
+            -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
+            transition: border-color 0s, width 0.25s, height 0.25s;
+            width: 100%;
+            height: 100%;
+        }
+
+        .draw-border:hover::before {
+            -webkit-transition-delay: 0s, 0s, 0.25s;
+            transition-delay: 0s, 0s, 0.25s;
+        }
+
+        .draw-border:hover::after {
+            -webkit-transition-delay: 0s, 0.25s, 0s;
+            transition-delay: 0s, 0.25s, 0s;
+        }
+
+.btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1.5;
+    font: 700 1.2rem "Roboto Slab", sans-serif;
+    padding: 1em 2em;
+    letter-spacing: 0.05rem;
+}
+
+    .btn:focus {
+        outline: 2px dotted #55d7dc;
+    }
+
+body {
+    background: black;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    min-height: 100vh;
+    /*overflow-y: hidden;*/
+}
+
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+}
