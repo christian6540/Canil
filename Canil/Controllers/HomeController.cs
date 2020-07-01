@@ -28,10 +28,10 @@ namespace Canil.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult login()
         {
-            return View();
+            return RedirectToAction("Index");
         }
 
         public IActionResult caes()
