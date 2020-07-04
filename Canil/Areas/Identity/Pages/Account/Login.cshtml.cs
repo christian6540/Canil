@@ -57,6 +57,12 @@ namespace Canil.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("/");
+            }
+
+
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
@@ -75,7 +81,13 @@ namespace Canil.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
-
+            if (!ModelState.IsValid)
+            {
+                var message = string.Join(" | ", ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage));
+                
+            }
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
