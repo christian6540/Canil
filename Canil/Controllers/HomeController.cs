@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Canil.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Canil.Models;
-using Microsoft.AspNetCore.Http;
+using System;
+using System.Diagnostics;
 using System.IO;
-using System.Net;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
+using System.Threading.Tasks;
 
 namespace Canil.Controllers
-{   
+{
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

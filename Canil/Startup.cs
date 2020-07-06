@@ -1,10 +1,12 @@
 using Canil.Data;
+using Canil.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Stripe;
 
 namespace Canil
 {
@@ -26,10 +28,15 @@ namespace Canil
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<CanilContext>();
 
+
+            services.AddDbContext<ApplicationsDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Identity/Account/Login");
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

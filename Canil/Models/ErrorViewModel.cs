@@ -1,5 +1,3 @@
-using System;
-
 namespace Canil.Models
 {
     public class ErrorViewModel

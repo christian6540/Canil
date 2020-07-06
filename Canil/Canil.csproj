@@ -1,15 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Migrations\20200627061032_Canil.cs" />
-    <Compile Remove="Migrations\20200627061032_Canil.Designer.cs" />
-    <Compile Remove="Migrations\20200627061123_canil.cs" />
-    <Compile Remove="Migrations\20200627061123_canil.Designer.cs" />
-  </ItemGroup>
 
   <ItemGroup>  
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />  
@@ -24,6 +17,7 @@
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.20" />
     <PackageReference Include="MySqlConnector" Version="0.69.4" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
+    <PackageReference Include="Stripe.net" Version="37.15.1" />
   </ItemGroup>
 
   <ItemGroup>
