@@ -1,6 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using Canil.Models.Products;
+using System.Threading.Tasks;
 
-namespace Canil.Models.Products
+namespace Canil.Models.CreateProducts
 {
     public class CreateProduct
     {
@@ -11,17 +12,22 @@ namespace Canil.Models.Products
             _context = context;
         }
 
-        public async Task Do(string Name, string Description, decimal Value)
+        public async Task Do(ProductViewModel vm)
         {
             _context.Products.Add(new Product
             {
-                Name = Name,
-                Description = Description,
-                Value = Value
+                Name = vm.Name,
+                Description = vm.Description,
+                Value = vm.Value
             });
 
             await _context.SaveChangesAsync();
         }
-
+        public class ProductViewModel
+        {
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public decimal Value { get; set; }
+        }
     }
 }
