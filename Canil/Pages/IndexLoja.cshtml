@@ -1,0 +1,17 @@
+﻿@page
+@model Canil.Pages.IndexLojaModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "/Views/Shared/_LayoutLoja.cshtml";
+}
+
+<div>
+    @{
+        foreach (var p in Model.Products)
+        {
+            <a asp-page="Product" asp-route-name="@p.Name.Replace(" ", "-")">
+                @p.Name - @p.Description - @p.Value
+            </a>
+        }
+    }
+</div>

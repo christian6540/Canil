@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stripe;
+using System;
 
 namespace Canil
 {
@@ -35,6 +36,10 @@ namespace Canil
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddSession(options => {
+                options.Cookie.Name = "Cart";
+                options.Cookie.MaxAge = TimeSpan.FromDays(365);
+            });
 
             StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
         }
@@ -59,6 +64,8 @@ namespace Canil
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
