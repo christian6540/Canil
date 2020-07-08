@@ -52,7 +52,6 @@ namespace Canil.Models.StockAdmin
         public class Request
         {
             public IEnumerable<StockViewModel> Stock { get; set; }
-
         }
 
         public class Response
