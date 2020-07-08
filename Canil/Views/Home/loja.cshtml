@@ -1,0 +1,62 @@
+﻿
+@{ ViewData["Title"] = "loja"; }
+
+<h1 style="color:white">Seja bem-vindo a nossa loja online</h1>
+<p>Todo o dinheiro angariado pela loja será usado para ajudar os cães do canil</p>
+
+<head>
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .price {
+            color: grey;
+            font-size: 22px;
+        }
+
+        .card button {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+        .card button:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="card">
+            <img src="~/Imagens/loja/bola_tenis.jpg" style="width: 100%" />
+            <h1>Bola de tenis</h1>
+            <p class="price">7,99€</p>
+            <p style="color:black">Bola de tenis que todos os cães adoram, brinque com o seu cão e ele terá várias horas de entretenimento.</p>
+            <p><button>Adicionar ao carrinho</button></p>
+        </div>
+
+        <div class="card">
+            <img src="~/Imagens/loja/osso_cao.jpg" style="width: 100%" />
+            <h1>Osso para cão</h1>
+            <p class="price">9,99€</p>
+            <p style="color:black">Osso de 330g com 12 cm de comprimento, é um bom produto para manter o seu cão entretido.</p>
+            <p><button>Adicionar ao carrinho</button></p>
+        </div>
+        <div class="card">
+            <img src="~/Imagens/loja/corda.jpg" style="width: 100%" />
+            <h1>Corda para cão</h1>
+            <p class="price">13,99€</p>
+            <p style="color:black">Esta corda com 50 cm de comprimento é um brinquedo ótimo para entreter o seu cão sozinho.</p>
+            <p><button>Adicionar ao carrinho</button></p>
+        </div>
+    </div>
+</body>
