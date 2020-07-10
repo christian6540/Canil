@@ -29,18 +29,18 @@ namespace Canil
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<CanilContext>();
 
-
-            services.AddDbContext<ApplicationsDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Identity/Account/Login");
 
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddSession(options => {
+            services.AddSession(options =>
+            {
                 options.Cookie.Name = "Cart";
                 options.Cookie.MaxAge = TimeSpan.FromDays(365);
             });
-
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
         }
 

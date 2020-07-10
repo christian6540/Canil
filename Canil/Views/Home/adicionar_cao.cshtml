@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -10,21 +9,23 @@
     <meta name="viewport" content="width=device-width" />
     <title>adicionar_cao</title>
     <style media="screen">
-        #custom-button{
-            padding:10px;
-            color:white;
-            background-color:#009578;
-            border:1px solid #000;
-            border-radius:5px;
-            cursor:pointer;
+        #custom-button {
+            padding: 10px;
+            color: white;
+            background-color: #009578;
+            border: 1px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        #custom-button:hover{
-            background-color:#00b28f
-        }
-        #custom-text{
-            margin-left:10px;
-            font-family:sans-serif;
-            color:#000;
+
+            #custom-button:hover {
+                background-color: #00b28f
+            }
+
+        #custom-text {
+            margin-left: 10px;
+            font-family: sans-serif;
+            color: #000;
         }
     </style>
 </head>
@@ -84,11 +85,11 @@
 
     <br />
 
-<form method="post" enctype="multipart/form-data" asp-controller="home" asp-action="adicionar_cao">
-    <input type="file" id="real-file"  name="file" />
-    <button type="submit" id="custom-button" name="submit">Submeter Imagem</button>
-    @*<span id="custom-text">Ainda não foi escolhida nehuma imagem...</span>*@
-</form>
+    <form method="post" enctype="multipart/form-data" asp-controller="home" asp-action="adicionar_cao">
+        <input type="file" id="real-file" name="file" />
+        <button type="submit" id="custom-button" name="submit">Submeter Imagem</button>
+        @*<span id="custom-text">Ainda não foi escolhida nehuma imagem...</span>*@
+    </form>
 
     <script type="text/javascript">
         const realFileBtn = document.getElementById("real-file")
@@ -104,6 +105,5 @@
             }
         });
     </script>
-
 </body>
 </html>

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Canil.Migrations.ApplicationsDb
 {
-    [DbContext(typeof(ApplicationsDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationsDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

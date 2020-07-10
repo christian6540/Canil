@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Canil.Models.Products
 {
@@ -12,6 +11,5 @@ namespace Canil.Models.Products
 
         public ICollection<Stock> Stock { get; set; }
         public ICollection<OrderProduct> OrderProduct { get; set; }
-
     }
 }

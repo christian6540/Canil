@@ -1,16 +1,14 @@
 ﻿using Canil.Models.Products;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Canil.Models.StockAdmin
 {
     public class UpdateStock
     {
-        private ApplicationsDbContext _ctx;
+        private ApplicationDbContext _ctx;
 
-        public UpdateStock(ApplicationsDbContext ctx)
+        public UpdateStock(ApplicationDbContext ctx)
         {
             _ctx = ctx;
         }
@@ -38,7 +36,6 @@ namespace Canil.Models.StockAdmin
             {
                 Stock = request.Stock
             };
-
         }
 
         public class StockViewModel

@@ -9,9 +9,9 @@ namespace Canil.Areas.Identity.Pages.Account.Manage
 {
     public class ResetAuthenticatorModel : PageModel
     {
-        UserManager<CanilUser> _userManager;
+        private UserManager<CanilUser> _userManager;
         private readonly SignInManager<CanilUser> _signInManager;
-        ILogger<ResetAuthenticatorModel> _logger;
+        private ILogger<ResetAuthenticatorModel> _logger;
 
         public ResetAuthenticatorModel(
             UserManager<CanilUser> userManager,

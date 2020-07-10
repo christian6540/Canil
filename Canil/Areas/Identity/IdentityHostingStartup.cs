@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: HostingStartup(typeof(Canil.Areas.Identity.IdentityHostingStartup))]
+
 namespace Canil.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 
 namespace Canil.Models.StockAdmin
 {
     public class DeleteStock
     {
-        private ApplicationsDbContext _ctx;
+        private ApplicationDbContext _ctx;
 
-        public DeleteStock(ApplicationsDbContext ctx)
+        public DeleteStock(ApplicationDbContext ctx)
         {
             _ctx = ctx;
         }
@@ -22,6 +20,5 @@ namespace Canil.Models.StockAdmin
             await _ctx.SaveChangesAsync();
             return true;
         }
-
     }
 }

@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Canil.Models.ProductsAdmin
 {
     public class GetProducts2
     {
-        private ApplicationsDbContext _ctx;
+        private ApplicationDbContext _ctx;
 
-        public GetProducts2(ApplicationsDbContext ctx)
+        public GetProducts2(ApplicationDbContext ctx)
         {
             _ctx = ctx;
         }
@@ -27,5 +26,5 @@ namespace Canil.Models.ProductsAdmin
             public string Description { get; set; }
             public string Value { get; set; }
         }
-    }        
+    }
 }

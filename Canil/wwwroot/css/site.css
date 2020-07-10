@@ -5,10 +5,10 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-html{
-    position:relative;
-    min-height:100%;
-    background-color:#101010
+html {
+    position: relative;
+    min-height: 100%;
+    background-color: #101010
 }
 
 body {
@@ -55,8 +55,8 @@ body {
         transition: 0.3s;
     }
 
-    .login:hover a{
-        color:goldenrod;
+    .login:hover a {
+        color: goldenrod;
     }
 
 .banner-image {
@@ -147,7 +147,7 @@ nav {
 
         .nav-links a:hover {
             background-color: #808080;
-/*            color: goldenrod;*/
+            /*            color: goldenrod;*/
         }
 
 .burger {
@@ -195,7 +195,7 @@ p {
     }
 
     .login {
-        right:2%;
+        right: 2%;
     }
 }
 
@@ -233,16 +233,15 @@ p {
         transition: transform 0.5s ease-in;
     }
 
-        .nav-links li {
-            opacity: 0;
+    .nav-links li {
+        opacity: 0;
+    }
+
+        .nav-links li ul {
+            transform: translate(-177px, -200px);
+            transition: transform 0.5s ease-in;
+            border-radius: 6px;
         }
-
-            .nav-links li ul {
-                transform: translate(-177px, -200px);
-                transition: transform 0.5s ease-in;
-                border-radius: 6px;
-            }
-
 
     .burger {
         display: block;
@@ -251,7 +250,6 @@ p {
     .separator {
         padding-top: 1vh;
     }
-
 }
 
 .nav-active {

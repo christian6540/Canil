@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Canil.Models.Products;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Canil.Models.Cart
 {
@@ -24,10 +23,30 @@ namespace Canil.Models.Cart
 
         public void Do(Request request)
         {
-            var stringObject = JsonConvert.SerializeObject(request);
+            var cartList = new List<CartProduct>();
+            var stringObject = _session.GetString("cart");
+
+            if (!string.IsNullOrEmpty(stringObject))
+            {
+                cartList = JsonConvert.DeserializeObject<List<CartProduct>>(stringObject);
+            }
+
+            if (cartList.Any(x => x.StockId == request.StockId))
+            {
+                cartList.Find(x => x.StockId == request.StockId).Qty += request.Qty;
+            }
+            else
+            {
+                cartList.Add(new CartProduct
+                {
+                    StockId = request.StockId,
+                    Qty = request.Qty,
+                });
+            }
+
+            stringObject = JsonConvert.SerializeObject(cartList);
 
             _session.SetString("cart", stringObject);
         }
-
     }
 }

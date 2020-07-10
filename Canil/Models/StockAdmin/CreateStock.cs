@@ -1,17 +1,13 @@
 ﻿using Canil.Models.Products;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Canil.Models.StockAdmin
 {
     public class CreateStock
     {
-        private ApplicationsDbContext _ctx;
+        private ApplicationDbContext _ctx;
 
-        public CreateStock(ApplicationsDbContext ctx)
+        public CreateStock(ApplicationDbContext ctx)
         {
             _ctx = ctx;
         }
@@ -35,7 +31,6 @@ namespace Canil.Models.StockAdmin
                 Description = stock.Description,
                 Qty = stock.Qty
             };
-                
         }
 
         public class Request
@@ -49,8 +44,7 @@ namespace Canil.Models.StockAdmin
         {
             public int Id { get; set; }
             public string Description { get; set; }
-            public int Qty { get; set; }           
+            public int Qty { get; set; }
         }
-
     }
 }

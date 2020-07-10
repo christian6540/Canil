@@ -1,7 +1,7 @@
 ﻿var app = new Vue({
-    el: '#app',    
+    el: '#app',
     data:
-    { 
+    {
         loading: false,
         objectIndex: 0,
         editing: false,
@@ -12,7 +12,7 @@
             description: "Product Description",
             value: 1.99
         },
-        products: []        
+        products: []
     },
     mounted() {
         this.getProducts()
@@ -110,11 +110,5 @@
         },
     },
     computed: {
-
     }
 });
-
-
-
-
-

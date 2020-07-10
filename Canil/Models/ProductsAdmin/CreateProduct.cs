@@ -5,9 +5,9 @@ namespace Canil.Models.ProductsAdmin
 {
     public class CreateProduct
     {
-        private ApplicationsDbContext _context;
+        private ApplicationDbContext _context;
 
-        public CreateProduct(ApplicationsDbContext context)
+        public CreateProduct(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -33,6 +33,7 @@ namespace Canil.Models.ProductsAdmin
                 Value = product.Value
             };
         }
+
         public class Request
         {
             public string Name { get; set; }
@@ -47,6 +48,5 @@ namespace Canil.Models.ProductsAdmin
             public string Description { get; set; }
             public decimal Value { get; set; }
         }
-
     }
 }

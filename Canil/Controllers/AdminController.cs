@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Canil.Models;
+﻿using Canil.Models;
 using Canil.Models.ProductsAdmin;
 using Canil.Models.StockAdmin;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Canil.Controllers
 {
     [Route("[controller]")]
     public class AdminController : Controller
     {
-        private ApplicationsDbContext _ctx;
+        private ApplicationDbContext _ctx;
 
-        public AdminController(ApplicationsDbContext ctx)
+        public AdminController(ApplicationDbContext ctx)
         {
             _ctx = ctx;
         }
@@ -33,9 +30,6 @@ namespace Canil.Controllers
 
         [HttpPut("products")]
         public async Task<IActionResult> UpdateProduct([FromBody] UpdateProduct.Request request) => Ok(await new UpdateProduct(_ctx).Do(request));
-
-
-
 
         [HttpGet("stocks")]
         public IActionResult GetStock() => Ok(new GetStock(_ctx).Do());

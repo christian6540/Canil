@@ -1,14 +1,13 @@
-﻿using Canil.Models.Products;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 
 namespace Canil.Models.ProductsAdmin
 {
     public class DeleteProduct
     {
-        private ApplicationsDbContext _context;
+        private ApplicationDbContext _context;
 
-        public DeleteProduct(ApplicationsDbContext context)
+        public DeleteProduct(ApplicationDbContext context)
         {
             _context = context;
         }

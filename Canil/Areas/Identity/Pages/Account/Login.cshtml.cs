@@ -59,7 +59,6 @@ namespace Canil.Areas.Identity.Pages.Account
                 Response.Redirect("/");
             }
 
-
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
@@ -83,7 +82,6 @@ namespace Canil.Areas.Identity.Pages.Account
                 var message = string.Join(" | ", ModelState.Values
                     .SelectMany(v => v.Errors)
                     .Select(e => e.ErrorMessage));
-
             }
             if (ModelState.IsValid)
             {

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Canil.Migrations.ApplicationsDb
 {
-    [DbContext(typeof(ApplicationsDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20200706211335_shopmodel")]
     partial class shopmodel
     {

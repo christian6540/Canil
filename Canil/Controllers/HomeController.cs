@@ -23,6 +23,7 @@ namespace Canil.Controllers
         {
             return View();
         }
+
         [Authorize]
         public IActionResult login()
         {
@@ -33,30 +34,37 @@ namespace Canil.Controllers
         {
             return View();
         }
+
         public IActionResult adote()
         {
             return View();
         }
+
         public IActionResult doaçoes()
         {
             return View();
         }
+
         public IActionResult loja()
         {
             return View();
         }
+
         public IActionResult canil()
         {
             return View();
         }
+
         public IActionResult saude()
         {
             return View();
         }
+
         public IActionResult treino()
         {
             return View();
         }
+
         public IActionResult atividades()
         {
             return View();
@@ -117,6 +125,5 @@ namespace Canil.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
     }
 }

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace Canil.Models.ProductsAdmin
 {
     public class GetProduct
     {
-        private ApplicationsDbContext _ctx;
+        private ApplicationDbContext _ctx;
 
-        public GetProduct(ApplicationsDbContext ctx)
+        public GetProduct(ApplicationDbContext ctx)
         {
             _ctx = ctx;
         }
@@ -22,7 +19,7 @@ namespace Canil.Models.ProductsAdmin
                 Description = x.Description,
                 Value = x.Value
             }).FirstOrDefault();
-        
+
         public class ProductViewModel
         {
             public int Id { get; set; }
@@ -32,4 +29,3 @@ namespace Canil.Models.ProductsAdmin
         }
     }
 }
-

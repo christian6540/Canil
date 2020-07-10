@@ -5,7 +5,7 @@
 /* Bordered form */
 form {
     background-color: #101010;
-/*    border: solid;
+    /*    border: solid;
     border-width:medium;
     border-color: whitesmoke;*/
 }
@@ -167,7 +167,6 @@ body {
     min-height: 100vh;
     overflow-y: hidden;
 }
-
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {

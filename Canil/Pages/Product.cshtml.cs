@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Canil.Models;
+﻿using Canil.Models;
+using Canil.Models.Cart;
 using Canil.Models.ProductsAdmin;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,20 +9,15 @@ namespace Canil.Pages
 {
     public class ProductModel : PageModel
     {
-        private ApplicationsDbContext _ctx;
+        private ApplicationDbContext _ctx;
 
-        public ProductModel(ApplicationsDbContext ctx)
+        public ProductModel(ApplicationDbContext ctx)
         {
             _ctx = ctx;
         }
 
         [BindProperty]
-        public Test ProductTest { get; set; }
-
-        public class Test
-        {
-            public string Id { get; set; }
-        }
+        public AddToCart.Request CartViewModel { get; set; }
 
         public GetProduct2.ProductViewModel Product { get; set; }
 
@@ -44,12 +36,12 @@ namespace Canil.Pages
 
         public IActionResult OnPost()
         {
-            var current_id = HttpContext.Session.GetString("id");
+            //var current_id = HttpContext.Session.GetString("id");
+            //HttpContext.Session.SetString("id", ProductTest.Id);
 
-            HttpContext.Session.SetString("id", ProductTest.Id);
+            new AddToCart(HttpContext.Session).Do(CartViewModel);
 
             return RedirectToPage("IndexLoja");
         }
-
     }
 }

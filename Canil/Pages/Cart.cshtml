@@ -1,0 +1,19 @@
+﻿@page
+@model Canil.Pages.CartModel
+@{
+    Layout = "/Views/Shared/_LayoutLojaUser.cshtml";
+    @addTagHelper *, Canil
+}
+
+<div>
+    @foreach (var product in Model.Cart)
+    {
+        <p>@product.Name</p>
+        <p>@product.Value</p>
+        <p>@product.Qty</p>
+        <p>@product.StockId</p>
+        <hr />
+    }
+</div>
+
+<vc:cart view="small"></vc:cart>

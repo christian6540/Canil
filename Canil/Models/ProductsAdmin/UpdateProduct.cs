@@ -1,14 +1,13 @@
-﻿using Canil.Models.Products;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 
 namespace Canil.Models.ProductsAdmin
 {
     public class UpdateProduct
     {
-        private ApplicationsDbContext _context;
+        private ApplicationDbContext _context;
 
-        public UpdateProduct(ApplicationsDbContext context)
+        public UpdateProduct(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -30,6 +29,7 @@ namespace Canil.Models.ProductsAdmin
                 Value = product.Value,
             };
         }
+
         public class Request
         {
             public int Id { get; set; }

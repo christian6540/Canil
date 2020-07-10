@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace Canil.Models.StockAdmin
 {
     public class GetStock
     {
-        private ApplicationsDbContext _ctx;
+        private ApplicationDbContext _ctx;
 
-        public GetStock(ApplicationsDbContext ctx)
+        public GetStock(ApplicationDbContext ctx)
         {
             _ctx = ctx;
         }
@@ -34,10 +32,8 @@ namespace Canil.Models.StockAdmin
                 })
                 .ToList();
 
-
             return stock;
         }
-
 
         public class StockViewModel
         {
@@ -53,9 +49,6 @@ namespace Canil.Models.StockAdmin
             public string Description { get; set; }
 
             public IEnumerable<StockViewModel> Stock { get; set; }
-            
         }
-
     }
 }
-
