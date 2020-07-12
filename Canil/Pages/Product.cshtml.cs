@@ -4,6 +4,7 @@ using Canil.Models.ProductsAdmin;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace Canil.Pages
 {
@@ -21,9 +22,9 @@ namespace Canil.Pages
 
         public GetProduct2.ProductViewModel Product { get; set; }
 
-        public IActionResult OnGet(string name)
+        public async Task<IActionResult> OnGet(string name)
         {
-            Product = new GetProduct2(_ctx).Do(name.Replace("-", " "));
+            Product = await new GetProduct2(_ctx).Do(name.Replace("-", " "));
             if (Product == null)
             {
                 return RedirectToPage("IndexLoja");
@@ -34,14 +35,21 @@ namespace Canil.Pages
             }
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
             //var current_id = HttpContext.Session.GetString("id");
             //HttpContext.Session.SetString("id", ProductTest.Id);
 
-            new AddToCart(HttpContext.Session).Do(CartViewModel);
+            var stockAdded = await new AddToCart(HttpContext.Session, _ctx).Do(CartViewModel);
 
-            return RedirectToPage("IndexLoja");
+            if (stockAdded)
+            {
+                return RedirectToPage("IndexLoja");
+            }
+            else
+            {
+                return Page();
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using Canil.Models.Cart;
+using Canil.Models.Orders;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -57,22 +59,16 @@ namespace Canil.Models
             _ctx = ctx;
         }
 
-        public IActionResult OnGet()
-        {
-            var information = new GetCustomerInformation(HttpContext.Session).Do();
-
-            if (information == null)
-            {
-                return RedirectToPage("/Checkout/CustomerInformation");
-            }
-
-            return RedirectToPage("/IndexLoja");
-        }
-
         [HttpPost]
-        public ActionResult Create(PaymentIntentCreateRequest request)
+        public ActionResult Create(PaymentIntentCreateRequest request, string stripeEmail, string stripeToken)
         {
-            var cartOrder = new GetOrder(HttpContext.Session, _ctx).Do();
+            var cartOrder = new Cart.GetOrder(HttpContext.Session, _ctx).Do();
+            var customers = new CustomerService();
+            var customer = customers.Create(new CustomerCreateOptions
+            {
+                Email = stripeEmail,
+                Source = stripeToken
+            });
 
             var paymentIntents = new PaymentIntentService();
             var paymentIntent = paymentIntents.Create(new PaymentIntentCreateOptions
@@ -82,8 +78,9 @@ namespace Canil.Models
                 Amount = cartOrder.GetTotalCharge(),
                 Description = "Shop Purchase",
                 Currency = "eur",
-                //Customer = customer.Id
+                Customer = customer.Id
             });
+
             return Json(new { clientSecret = paymentIntent.ClientSecret });
         }
 

@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Canil.Models;
-using Canil.Models.Cart;
+﻿using Canil.Models.Cart;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Hosting;
 
 namespace Canil.Pages.Checkout
 {
     public class CustomerInformationModel : PageModel
     {
+        private IHostEnvironment _env;
+
+        public CustomerInformationModel(IHostEnvironment env)
+        {
+            _env = env;
+        }
+
         [BindProperty]
         public AddCustomerInformation.Request CustomerInformation { get; set; }
 
@@ -20,6 +23,20 @@ namespace Canil.Pages.Checkout
 
             if (information == null)
             {
+                if (_env.IsDevelopment())
+                {
+                    CustomerInformation = new AddCustomerInformation.Request
+                    {
+                        FirstName = "A",
+                        LastName = "A",
+                        Email = "A@A.com",
+                        PhoneNumber = "11",
+                        Adress1 = "A",
+                        Adress2 = "A",
+                        City = "A",
+                        PostCode = "A",
+                    };
+                }
                 return Page();
             }
             else

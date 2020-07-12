@@ -10,6 +10,6 @@ namespace Canil.Models.Products
         public decimal Value { get; set; }
 
         public ICollection<Stock> Stock { get; set; }
-        public ICollection<OrderProduct> OrderProduct { get; set; }
+        public ICollection<OrderStock> OrderStocks { get; set; }
     }
 }

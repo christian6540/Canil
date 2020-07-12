@@ -1,5 +1,6 @@
 ﻿@page
 @model Canil.Pages.Checkout.PaymentModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Payment";
     Layout = "/Views/Shared/_LayoutLojaUser.cshtml";
@@ -17,17 +18,21 @@
 </head>
 <body>
     <!-- Display a payment form -->
-    <form id="payment-form">
+    <form method="post" id="payment-form">
         <div id="card-element"><!--Stripe.js injects the Card Element--></div>
-        <button id="submit">
+        <button id="submit" type="submit">
             <div class="spinner hidden" id="spinner"></div>
             <span id="button-text">Pay</span>
-        </button>
+        </button>       
         <p id="card-error" role="alert"></p>
         <p class="result-message hidden">
             Payment succeeded, see the result in your
             <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
         </p>
+    </form>
+
+    <form method="post">
+        <button type="submit" id="secondaryButton" style="visibility:hidden;"></button>
     </form>
 
     <script>
@@ -100,6 +105,7 @@
                     } else {
                         // The payment succeeded!
                         orderComplete(result.paymentIntent.id);
+                        document.getElementById("secondaryButton").click();
                     }
                 });
         };

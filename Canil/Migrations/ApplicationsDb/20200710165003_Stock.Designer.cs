@@ -3,14 +3,16 @@ using System;
 using Canil.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Canil.Migrations.ApplicationsDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200710165003_Stock")]
+    partial class Stock
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,31 +123,6 @@ namespace Canil.Migrations.ApplicationsDb
                     b.HasIndex("ProductId");
 
                     b.ToTable("Stock");
-                });
-
-            modelBuilder.Entity("Canil.Models.Products.StockOnHold", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ExpiryDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("Qty")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SessionId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("StockId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StockId");
-
-                    b.ToTable("StocksOnHold");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -368,15 +345,6 @@ namespace Canil.Migrations.ApplicationsDb
                     b.HasOne("Canil.Models.Products.Product", "Product")
                         .WithMany("Stock")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Canil.Models.Products.StockOnHold", b =>
-                {
-                    b.HasOne("Canil.Models.Products.Stock", "Stock")
-                        .WithMany()
-                        .HasForeignKey("StockId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
