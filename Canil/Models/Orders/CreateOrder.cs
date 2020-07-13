@@ -66,7 +66,7 @@ namespace Canil.Models.Orders
                 City = request.City,
                 PostCode = request.PostCode,
 
-                OrderStocks = request.Stocks.Select(x => new OrderStock
+                OrderStocks = request.Stocks.AsEnumerable().Select(x => new OrderStocks
                 {
                     StockId = x.StockId,
                     Qty = x.Qty,

@@ -33,19 +33,22 @@ namespace Canil.Models.ProductsAdmin
                 await _ctx.SaveChangesAsync();
             }
 
-            return _ctx.Products.Include(x => x.Stock).Where(x => x.Name == name).Select(x => new ProductViewModel
-            {
-                Name = x.Name,
-                Description = x.Description,
-                Value = $"{x.Value.ToString("N2")}€",
-
-                Stock = x.Stock.Select(y => new StockViewModel
+            return _ctx.Products
+                .Include(x => x.Stock)
+                .Where(x => x.Name == name)
+                .Select(x => new ProductViewModel
                 {
-                    Id = y.Id,
-                    Description = y.Description,
-                    InStock = y.Qty > 0,
-                })
-            }).FirstOrDefault();
+                    Name = x.Name,
+                    Description = x.Description,
+                    Value = $"{x.Value.ToString("N2")}€",
+
+                    Stock = x.Stock.Select(y => new StockViewModel
+                    {
+                        Id = y.Id,
+                        Description = y.Description,
+                        InStock = y.Qty > 0,
+                    })
+                }).FirstOrDefault();
         }
 
         public class ProductViewModel

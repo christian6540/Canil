@@ -16,17 +16,14 @@
             <div class="banner-image"></div>
         </div>
 
-        @*<div class="login">
-                <ul>
-                    <li>
-                        <a asp-controller="home" asp-action="login" style="float:right;">Login</a>
-                        <partial name="_LoginPartial.cshtml" />
-                    </li>
-                </ul>
-            </div>*@
-
-        <a asp-page="/Account/Login">Sign In</a>
-        <a asp-controller="Account" asp-action="Logout">Sign Out</a>
+        <div class="login">
+            <ul>
+                <li>
+                    @*<a asp-controller="home" asp-action="login" style="float:right;">Login</a>*@
+                    <partial name="_LoginPartial.cshtml" />
+                </li>
+            </ul>
+        </div>
 
         <div class="container1">
             <nav>

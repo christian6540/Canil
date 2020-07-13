@@ -13,14 +13,15 @@ namespace Canil.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Stock> Stock { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderStock> OrderStocks { get; set; }
+        public DbSet<OrderStocks> OrderStocks { get; set; }
         public DbSet<StockOnHold> StocksOnHold { get; set; }
+        public DbSet<StockOnHold> Doação { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<OrderStock>()
-                .HasKey(x => new { x.StockId, x.OrderId });
+            modelBuilder.Entity<OrderStocks>()
+                .HasKey(x => new { x.StockId, x.OrderId, });
         }
     }
 }

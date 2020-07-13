@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Canil.Enums;
+using System.Collections.Generic;
 
 namespace Canil.Models.Products
 {
@@ -18,6 +19,8 @@ namespace Canil.Models.Products
         public string City { get; set; }
         public string PostCode { get; set; }
 
-        public ICollection<OrderStock> OrderStocks { get; set; }
+        public OrderStatus Status { get; set; }
+
+        public ICollection<OrderStocks> OrderStocks { get; set; }
     }
 }

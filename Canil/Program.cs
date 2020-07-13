@@ -1,3 +1,4 @@
+using Canil.Data;
 using Canil.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -13,46 +14,46 @@ namespace Canil
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
+            CreateHostBuilder(args).Build().Run();
 
-            try
-            {
-                using (var scope = host.Services.CreateScope())
-                {
-                    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            //try
+            //{
+            //    using (var scope = host.Services.CreateScope())
+            //    {
+            //        var context = scope.ServiceProvider.GetRequiredService<CanilContext>();
+            //        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-                    context.Database.EnsureCreated();
+            //        context.Database.EnsureCreated();
 
-                    if (!context.Users.Any())
-                    {
-                        var adminUser = new IdentityUser()
-                        {
-                            UserName = "Admin",
-                        };
+            //        if (!context.Users.Any())
+            //        {
+            //            var adminUser = new IdentityUser()
+            //            {
+            //                UserName = "Admin",
+            //            };
 
-                        var managerUser = new IdentityUser()
-                        {
-                            UserName = "Manager",
-                        };
+            //            var managerUser = new IdentityUser()
+            //            {
+            //                UserName = "Manager",
+            //            };
 
-                        userManager.CreateAsync(adminUser, "password").GetAwaiter().GetResult();
-                        userManager.CreateAsync(managerUser, "password").GetAwaiter().GetResult();
+            //            userManager.CreateAsync(adminUser, "password").GetAwaiter().GetResult();
+            //            userManager.CreateAsync(managerUser, "password").GetAwaiter().GetResult();
 
-                        var adminClaim = new Claim("Role", "Admin");
-                        var managerClaim = new Claim("Role", "Manager");
+            //            var adminClaim = new Claim("Role", "Admin");
+            //            var managerClaim = new Claim("Role", "Manager");
 
-                        userManager.AddClaimAsync(adminUser, adminClaim).GetAwaiter().GetResult();
-                        userManager.AddClaimAsync(managerUser, managerClaim).GetAwaiter().GetResult();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            //            userManager.AddClaimAsync(adminUser, adminClaim).GetAwaiter().GetResult();
+            //            userManager.AddClaimAsync(managerUser, managerClaim).GetAwaiter().GetResult();
+            //        }
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //}
 
-            host.Run();
+            //host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

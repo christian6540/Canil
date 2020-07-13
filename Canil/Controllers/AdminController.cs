@@ -1,12 +1,14 @@
 ﻿using Canil.Models;
 using Canil.Models.ProductsAdmin;
 using Canil.Models.StockAdmin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Canil.Controllers
 {
     [Route("[controller]")]
+    [Authorize(Policy = "Admin")]
     public class AdminController : Controller
     {
         private ApplicationDbContext _ctx;

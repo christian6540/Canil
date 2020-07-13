@@ -3,14 +3,16 @@ using System;
 using Canil.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Canil.Migrations.ApplicationsDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200713163227_OrderAdmin")]
+    partial class OrderAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +63,7 @@ namespace Canil.Migrations.ApplicationsDb
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Canil.Models.Products.OrderStocks", b =>
+            modelBuilder.Entity("Canil.Models.Products.OrderStock", b =>
                 {
                     b.Property<int>("StockId")
                         .HasColumnType("int");
@@ -69,7 +71,7 @@ namespace Canil.Migrations.ApplicationsDb
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Qty")
@@ -347,7 +349,7 @@ namespace Canil.Migrations.ApplicationsDb
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Canil.Models.Products.OrderStocks", b =>
+            modelBuilder.Entity("Canil.Models.Products.OrderStock", b =>
                 {
                     b.HasOne("Canil.Models.Products.Order", "Order")
                         .WithMany("OrderStocks")
@@ -355,11 +357,9 @@ namespace Canil.Migrations.ApplicationsDb
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Canil.Models.Products.Product", "Product")
+                    b.HasOne("Canil.Models.Products.Product", null)
                         .WithMany("OrderStocks")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.HasOne("Canil.Models.Products.Stock", "Stock")
                         .WithMany("OrderStocks")

@@ -23,17 +23,20 @@ namespace Canil.Areas.Identity.Pages.Account
         private readonly UserManager<CanilUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public RegisterModel(
             UserManager<CanilUser> userManager,
             SignInManager<CanilUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         [BindProperty]
@@ -45,6 +48,8 @@ namespace Canil.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            public string Role { get; set; }
+
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Username")]
@@ -94,6 +99,8 @@ namespace Canil.Areas.Identity.Pages.Account
                 Response.Redirect("/");
             }
 
+            ViewData["roles"] = _roleManager.Roles.ToList();
+
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -102,6 +109,7 @@ namespace Canil.Areas.Identity.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            var role = _roleManager.FindByIdAsync(Input.Role).Result;
             if (ModelState.IsValid)
             {
                 var user = new CanilUser { UserName = Input.UserName, Email = Input.Email, PhoneNumber = Input.Telefone, Name = Input.nome, Surname = Input.apelido, Adress = Input.morada };
@@ -109,6 +117,8 @@ namespace Canil.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    await _userManager.AddToRoleAsync(user, role.Name);
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

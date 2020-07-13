@@ -27,27 +27,23 @@ namespace Canil
             services.AddDbContext<CanilContext>(options =>
                 options.UseMySql(
                     Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<CanilContext>();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(options =>
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Identity/Account/Login");
+
+            services.AddMvc().AddRazorPagesOptions(options =>
             {
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 6;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-            })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                options.Conventions.AuthorizeFolder("/Admin", "Admin");
+            });
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));
-                options.AddPolicy("Manager", policy => policy.RequireClaim("Manager"));
+                options.AddPolicy("Admin",
+                    builder => builder.RequireRole("Admin"));
+                options.AddPolicy("User",
+                    builder => builder.RequireRole("Admin", "User"));
             });
-
-            services.ConfigureApplicationCookie(options => options.LoginPath = "/Identity/Account/Login");
 
             services.AddControllersWithViews();
             services.AddRazorPages();
