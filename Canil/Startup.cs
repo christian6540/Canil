@@ -37,6 +37,8 @@ namespace Canil
                 options.Conventions.AuthorizeFolder("/Admin", "Admin");
             });
 
+            services.AddHttpContextAccessor();
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin",

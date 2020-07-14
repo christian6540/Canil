@@ -22,9 +22,9 @@ namespace Canil.Models.StockAdmin
                 stocks.Add(new Stock
                 {
                     Id = stock.Id,
-                    Description = stock.Description,
-                    Qty = stock.Qty,
-                    ProductId = stock.ProductId
+                    description = stock.Description,
+                    qty = stock.Qty,
+                    productId = stock.ProductId
                 });
             }
 

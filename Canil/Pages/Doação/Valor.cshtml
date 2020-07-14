@@ -1,0 +1,25 @@
+﻿@page
+@model Canil.Pages.Admin.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "/Views/Shared/_LayoutLoja.cshtml";
+}
+<body>
+    <div id="app" class="container">
+
+        <div class="field">
+            <label class="label">Valor</label>
+            <div class="control">
+                <input class="input" type="number" v-model.number="DoaçãoModel.Valor" />
+            </div>
+        </div>
+        <button class="button is-success" @@click="createDoação()" v-if="!DoaçãoModel.Id">Confirmar</button>
+        <div v-if="Carregado">
+            <p>Doação realizada com Sucesso</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="~/js/Doação.js"></script>
+</body>

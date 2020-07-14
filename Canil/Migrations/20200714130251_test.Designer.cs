@@ -3,14 +3,16 @@ using System;
 using Canil.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Canil.Migrations
 {
     [DbContext(typeof(CanilContext))]
-    partial class CanilContextModelSnapshot : ModelSnapshot
+    [Migration("20200714130251_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,13 +92,16 @@ namespace Canil.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Canil.Areas.Identity.Data.Doação", b =>
+            modelBuilder.Entity("Canil.Models.Valores.Doação", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CanilUserId")
+                    b.Property<int>("CanilUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CanilUserId1")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<decimal>("Valor")
@@ -104,7 +109,7 @@ namespace Canil.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CanilUserId");
+                    b.HasIndex("CanilUserId1");
 
                     b.ToTable("Doação");
                 });
@@ -241,11 +246,11 @@ namespace Canil.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Canil.Areas.Identity.Data.Doação", b =>
+            modelBuilder.Entity("Canil.Models.Valores.Doação", b =>
                 {
-                    b.HasOne("Canil.Areas.Identity.Data.CanilUser", null)
+                    b.HasOne("Canil.Areas.Identity.Data.CanilUser", "CanilUser")
                         .WithMany("Doação")
-                        .HasForeignKey("CanilUserId");
+                        .HasForeignKey("CanilUserId1");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

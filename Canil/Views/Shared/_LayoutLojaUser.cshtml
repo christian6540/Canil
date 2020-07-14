@@ -1,6 +1,11 @@
 ﻿@{
     Layout = null;
 }
+@using Microsoft.AspNetCore.Identity
+@using Canil.Areas.Identity.Data
+@inject SignInManager<CanilUser> SignInManager
+@inject UserManager<CanilUser> UserManager
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +15,11 @@
     <link href="~/lib/bulma-0.9.0/css/bulma.css" rel="stylesheet" />
 </head>
 <body>
-    <a asp-page="/Admin/Index">Admin</a>
+
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <a asp-page="/Admin/Index">Admin</a>
+    }
 
     <div class="container body-content">
         @RenderBody()

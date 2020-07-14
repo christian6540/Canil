@@ -66,7 +66,7 @@ namespace Canil.Models.Orders
                         Description = y.Stock.Product.Description,
                         Value = $"{y.Stock.Product.Value.ToString("N2")}€",
                         Qty = y.Qty,
-                        StockDescription = y.Stock.Description,
+                        StockDescription = y.Stock.description,
                     }),
                     TotalValue = x.OrderStocks.Sum(y => y.Stock.Product.Value).ToString("N2")
                 })

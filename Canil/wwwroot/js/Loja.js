@@ -12,7 +12,7 @@
             description: "Product Description",
             value: 1.99
         },
-        products: []
+        products: [],
     },
     mounted() {
         this.getProducts()

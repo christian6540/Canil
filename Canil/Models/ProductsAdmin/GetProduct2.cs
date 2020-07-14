@@ -25,7 +25,7 @@ namespace Canil.Models.ProductsAdmin
 
                 foreach (var stock in stockToReturn)
                 {
-                    stock.Qty = stock.Qty + stocksOnHold.FirstOrDefault(x => x.StockId == stock.Id).Qty;
+                    stock.qty = stock.qty + stocksOnHold.FirstOrDefault(x => x.StockId == stock.Id).Qty;
                 }
 
                 _ctx.StocksOnHold.RemoveRange(stocksOnHold);
@@ -45,8 +45,8 @@ namespace Canil.Models.ProductsAdmin
                     Stock = x.Stock.Select(y => new StockViewModel
                     {
                         Id = y.Id,
-                        Description = y.Description,
-                        InStock = y.Qty > 0,
+                        Description = y.description,
+                        InStock = y.qty > 0,
                     })
                 }).FirstOrDefault();
         }

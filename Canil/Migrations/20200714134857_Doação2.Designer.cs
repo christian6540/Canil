@@ -3,14 +3,16 @@ using System;
 using Canil.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Canil.Migrations
 {
     [DbContext(typeof(CanilContext))]
-    partial class CanilContextModelSnapshot : ModelSnapshot
+    [Migration("20200714134857_Doação2")]
+    partial class Doação2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -243,7 +245,7 @@ namespace Canil.Migrations
 
             modelBuilder.Entity("Canil.Areas.Identity.Data.Doação", b =>
                 {
-                    b.HasOne("Canil.Areas.Identity.Data.CanilUser", null)
+                    b.HasOne("Canil.Areas.Identity.Data.CanilUser", "CanilUser")
                         .WithMany("Doação")
                         .HasForeignKey("CanilUserId");
                 });

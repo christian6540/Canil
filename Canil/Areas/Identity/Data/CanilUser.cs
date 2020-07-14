@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Canil.Areas.Identity.Data
@@ -17,5 +18,7 @@ namespace Canil.Areas.Identity.Data
         [PersonalData]
         [Column(TypeName = "varchar(100)")]
         public string Adress { get; set; }
+
+        public ICollection<Doação> Doação { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace Canil.Models.Cart
             var stockOnHold = _ctx.StocksOnHold.AsEnumerable().Where(x => x.SessionId == _session.Id).ToList();
             var stockToHold = _ctx.Stock.Where(x => x.Id == request.StockId).FirstOrDefault();
 
-            if (stockToHold.Qty < request.Qty)
+            if (stockToHold.qty < request.Qty)
             {
                 return false;
             }
@@ -43,7 +43,7 @@ namespace Canil.Models.Cart
                 ExpiryDate = DateTime.Now.AddMinutes(20),
             });
 
-            stockToHold.Qty = stockToHold.Qty - request.Qty;
+            stockToHold.qty = stockToHold.qty - request.Qty;
 
             foreach (var stock in stockOnHold)
             {

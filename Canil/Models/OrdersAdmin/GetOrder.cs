@@ -69,7 +69,7 @@ namespace Canil.Models.OrdersAdmin
                         Name = y.Stock.Product.Name,
                         Description = y.Stock.Product.Description,
                         Qty = y.Qty,
-                        StockDescription = y.Stock.Description,
+                        StockDescription = y.Stock.description,
                     }),
                 })
                 .FirstOrDefault();

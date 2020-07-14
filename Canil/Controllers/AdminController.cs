@@ -1,4 +1,5 @@
 ﻿using Canil.Models;
+using Canil.Models.Doações;
 using Canil.Models.ProductsAdmin;
 using Canil.Models.StockAdmin;
 using Microsoft.AspNetCore.Authorization;
@@ -37,7 +38,7 @@ namespace Canil.Controllers
         public IActionResult GetStock() => Ok(new GetStock(_ctx).Do());
 
         [HttpPost("stocks")]
-        public async Task<IActionResult> CreateStock([FromBody] CreateStock.Request request) => Ok((await new CreateStock(_ctx).Do(request)));
+        public async Task<IActionResult> CreateStock([FromBody] CreateStock.Request request) => Ok(await new CreateStock(_ctx).Do(request));
 
         [HttpDelete("stocks/{id}")]
         public async Task<IActionResult> DeleteStock(int id) => Ok(await new DeleteStock(_ctx).Do(id));

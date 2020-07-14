@@ -66,7 +66,7 @@ namespace Canil.Models.Cart
                 .Where(x => cartList.Any(y => y.StockId == x.Id))
                 .Select(x => new Product
                 {
-                    ProductId = x.ProductId,
+                    ProductId = x.productId,
                     StockId = x.Id,
                     Value = (int)(x.Product.Value * 100),
                     Qty = cartList.FirstOrDefault(y => y.StockId == x.Id).Qty

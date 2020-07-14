@@ -1,4 +1,6 @@
-﻿using Canil.Models;
+﻿using Canil.Data;
+using Canil.Models;
+using Canil.Models.Doações;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +15,12 @@ namespace Canil.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly CanilContext _ctx;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, CanilContext ctx)
         {
             _logger = logger;
+            _ctx = ctx;
         }
 
         public IActionResult Index()

@@ -26,8 +26,8 @@ namespace Canil.Models.StockAdmin
                     new StockViewModel
                     {
                         Id = y.Id,
-                        Description = y.Description,
-                        Qty = y.Qty,
+                        Description = y.description,
+                        Qty = y.qty,
                     })
                 })
                 .ToList();

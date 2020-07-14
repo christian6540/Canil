@@ -5,6 +5,11 @@
     var roles = (List<IdentityRole>)ViewData["roles"];
     Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
 }
+@using Microsoft.AspNetCore.Identity
+@using Canil.Areas.Identity.Data
+@inject SignInManager<CanilUser> SignInManager
+@inject UserManager<CanilUser> UserManager
+
 <head>
     <link href="~/css/Resistrar.css" rel="stylesheet" />
 </head>
@@ -38,10 +43,14 @@
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Input.Email"></label>
-        <input asp-for="Input.Email" class="form-control" />
-        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -76,12 +85,22 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Input.Role"></label>
-        <select asp-for="Input.Role" class="form-control" asp-items='new SelectList(roles,"Id","Name")'></select>
-        <span asp-validation-for="Input.Role" class="text-danger"></span>
-    </div>
-
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <div class="form-group">
+            <label asp-for="Input.Role"></label>
+            <select asp-for="Input.Role" class="form-control" asp-items='new SelectList(roles, "Id", "Name")'></select>
+            <span asp-validation-for="Input.Role" class="text-danger"></span>
+        </div>
+    }
+    else
+    {
+        <div class="form-group" style="display:none">
+            <label style="display:none" asp-for="Input.Role"></label>
+            <select style="display:none" asp-for="Input.Role" class="form-control" asp-items='new SelectList(roles, "Id", "Name")'></select>
+            <span style="display:none" asp-validation-for="Input.Role" class="text-danger"></span>
+        </div>
+    }
     <button type="submit" class="btn btn-primary">Register</button>
 </form>
 

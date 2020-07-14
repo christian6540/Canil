@@ -16,9 +16,9 @@ namespace Canil.Models.StockAdmin
         {
             var stock = new Stock
             {
-                Description = request.Description,
-                Qty = request.Qty,
-                ProductId = request.ProductId
+                description = request.description,
+                qty = request.qty,
+                productId = request.productId
             };
 
             _ctx.Stock.Add(stock);
@@ -27,24 +27,24 @@ namespace Canil.Models.StockAdmin
 
             return new Response
             {
-                Id = stock.Id,
-                Description = stock.Description,
-                Qty = stock.Qty
+                id = stock.Id,
+                description = stock.description,
+                qty = stock.qty
             };
         }
 
         public class Request
         {
-            public string Description { get; set; }
-            public int Qty { get; set; }
-            public int ProductId { get; set; }
+            public string description { get; set; }
+            public int qty { get; set; }
+            public int productId { get; set; }
         }
 
         public class Response
         {
-            public int Id { get; set; }
-            public string Description { get; set; }
-            public int Qty { get; set; }
+            public int id { get; set; }
+            public string description { get; set; }
+            public int qty { get; set; }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Canil.Models.Products;
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,7 @@ namespace Canil.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderStocks> OrderStocks { get; set; }
         public DbSet<StockOnHold> StocksOnHold { get; set; }
-        public DbSet<StockOnHold> Doação { get; set; }
+        //public DbSet<Doação> Doação { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
