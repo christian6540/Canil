@@ -1,7 +1,6 @@
 ﻿var app = new Vue({
     el: '#app',
-    data:
-    {
+    data: {
         loading: false,
         objectIndex: 0,
         editing: false,

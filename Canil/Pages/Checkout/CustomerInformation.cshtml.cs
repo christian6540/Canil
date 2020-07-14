@@ -23,20 +23,20 @@ namespace Canil.Pages.Checkout
 
             if (information == null)
             {
-                if (_env.IsDevelopment())
-                {
-                    CustomerInformation = new AddCustomerInformation.Request
-                    {
-                        FirstName = "A",
-                        LastName = "A",
-                        Email = "A@A.com",
-                        PhoneNumber = "11",
-                        Adress1 = "A",
-                        Adress2 = "A",
-                        City = "A",
-                        PostCode = "A",
-                    };
-                }
+                //if (_env.IsDevelopment())
+                //{
+                //    CustomerInformation = new AddCustomerInformation.Request
+                //    {
+                //        FirstName = "A",
+                //        LastName = "A",
+                //        Email = "A@A.com",
+                //        PhoneNumber = "11",
+                //        Adress1 = "A",
+                //        Adress2 = "A",
+                //        City = "A",
+                //        PostCode = "A",
+                //    };
+                //}
                 return Page();
             }
             else

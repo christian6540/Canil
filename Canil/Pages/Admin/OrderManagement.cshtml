@@ -3,29 +3,32 @@
 @{
     Layout = "/Views/Shared/_LayoutLoja.cshtml";
 }
-<head>
-</head>
-<div id="app">
-    <div v-if="SelectedOrder === Null">
-        <div class="tabs is-centered">
-            <ul>
-                <li v-bind:class="{'is-active': status === 0}"><a @@click="status = 0">Pending</a></li>
-                <li v-bind:class="{'is-active': status === 1}"><a @@click="status = 1">Packed</a></li>
-                <li v-bind:class="{'is-active': status === 2}"><a @@click="status = 2">Shipped</a></li>
-            </ul>
+<body>
+    <div id="app">
+        <div v-if="SelectedOrder === Null">
+            <div class="tabs is-centered">
+                <ul>
+                    <li v-bind:class="{'is-active': status === 0}"><a @@click="status = 0">Pending</a></li>
+                    <li v-bind:class="{'is-active': status === 1}"><a @@click="status = 1">Packed</a></li>
+                    <li v-bind:class="{'is-active': status === 2}"><a @@click="status = 2">Shipped</a></li>
+                </ul>
+            </div>
+            <div v-if="orders.lenght > 0">
+                <p v-for="order in orders">
+                    <a @@click="selectedOrder(order.id)">{{order.orderRef}} - {{order.email}}</a>
+                </p>
+            </div>
         </div>
-        <div v-if="orders.lenght > 0">
-            <p v-for="order in orders">
-                <a @@click="selectedOrder(order.id)">{{order.orderRef}} - {{order.email}}</a>
+        <div v-else>
+            <p>
+                <button @@click="exitOrder()">Exit</button>
             </p>
+            <p class="title">{{selectedOrder.orderRef}}</p>
+            <p class="title">{{selectedOrder.email}}</p>
+            <button @@click="updateOrder()">Process</button>
         </div>
     </div>
-    <div v-else>
-        <p>
-            <button @@click="exitOrder()">Exit</button>
-        </p>
-        <p class="title">{{selectedOrder.orderRef}}</p>
-        <p class="title">{{selectedOrder.email}}</p>
-        <button @@click="updateOrder()">Process</button>
-    </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="~/js/orders.js"></script>
+</body>

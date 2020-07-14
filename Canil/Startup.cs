@@ -35,6 +35,13 @@ namespace Canil
             services.AddMvc().AddRazorPagesOptions(options =>
             {
                 options.Conventions.AuthorizeFolder("/Admin", "Admin");
+                options.Conventions.AuthorizeFolder("/Checkout");
+                options.Conventions.AuthorizeFolder("/Components");
+                options.Conventions.AuthorizeFolder("/cart");
+                options.Conventions.AuthorizePage("/IndexLoja");
+                options.Conventions.AuthorizePage("/Order");
+                options.Conventions.AuthorizePage("/Product");
+                options.Conventions.AuthorizePage("/Doação/Valor");
             });
 
             services.AddHttpContextAccessor();

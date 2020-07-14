@@ -9,41 +9,55 @@
     <form method="post">
 
         <div>
+            <label>Nome</label>
             <input asp-for="CustomerInformation.FirstName" />
             <span asp-validation-for="CustomerInformation.FirstName"></span>
         </div>
 
         <div>
+            <label>Apelido</label>
+
             <input asp-for="CustomerInformation.LastName" />
             <span asp-validation-for="CustomerInformation.LastName"></span>
         </div>
 
         <div>
+            <label>Número Telefone</label>
+
             <input asp-for="CustomerInformation.PhoneNumber" />
             <span asp-validation-for="CustomerInformation.PhoneNumber"></span>
         </div>
 
         <div>
+            <label>Email</label>
+
             <input asp-for="CustomerInformation.Email" />
             <span asp-validation-for="CustomerInformation.Email"></span>
         </div>
 
         <div>
+            <label>Morada1</label>
             <input asp-for="CustomerInformation.Adress1" />
             <span asp-validation-for="CustomerInformation.Adress1"></span>
         </div>
 
         <div>
+            <label>Morada2 (Opcional)</label>
+
             <input asp-for="CustomerInformation.Adress2" />
             <span asp-validation-for="CustomerInformation.Adress2"></span>
         </div>
 
         <div>
+            <label>Cidade</label>
+
             <input asp-for="CustomerInformation.City" />
             <span asp-validation-for="CustomerInformation.City"></span>
         </div>
 
         <div>
+            <label>Código Postal</label>
+
             <input asp-for="CustomerInformation.PostCode" />
             <span asp-validation-for="CustomerInformation.PostCode"></span>
         </div>
